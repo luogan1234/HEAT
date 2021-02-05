@@ -17,7 +17,6 @@ Run `python init.py` to download datasets. Run `bash run.sh` to train the model 
 ### Usage
 
 - `-task` specifies the task id
-
 - `-dataset` specifies the dataset name
 - `-text_encoder` specifies the text encoder in {'bert', 'bert_freeze', 'lstm'}
 - `-remove_name, -remove_para, -remove_img` make the model not use corresponding modules
