@@ -7,7 +7,6 @@ import os
 import torch
 import random
 import numpy as np
-import wandb
 
 def set_seed(seed):
     random.seed(seed)

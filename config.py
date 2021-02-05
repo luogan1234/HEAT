@@ -1,7 +1,6 @@
 import numpy as np
 import torch
 import math
-import wandb
 
 class Config:
     def __init__(self, dataset, task, text_encoder, remove_info, module_info, consistency, labeled_num, seed, cpu):
@@ -62,7 +61,7 @@ class Config:
         if self.text_encoder == 'bert' and not (self.remove_name and self.remove_para):
             lr = 2e-5
         else:
-            if self.dataset in ['bird', 'flower']:
+            if self.dataset in ['flower']:
                 lr = 5e-5
             else:
                 lr = 1e-3

@@ -14,7 +14,6 @@ import time
 import pickle
 import sys
 import copy
-import wandb
 
 class Processor(object):
     def __init__(self, data_loader, config):
