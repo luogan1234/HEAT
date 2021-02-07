@@ -38,13 +38,8 @@ class Processor(object):
         targets_sharpen = (targets/self.config.con_temperature).sigmoid()
         targets = targets.sigmoid()
         masks = (targets > self.config.con_threshold) + ((1-targets) > self.config.con_threshold)
-        #masks1 = targets > self.config.con_threshold
-        #masks2 = (1-targets) > self.config.con_threshold
         loss1 = F.mse_loss(outputs, targets_sharpen, reduction='none')
         loss2 = F.mse_loss(1-outputs, 1-targets_sharpen, reduction='none')
-        #loss3 = F.mse_loss(outputs, targets, reduction='none')
-        #loss4 = F.mse_loss(1-outputs, 1-targets, reduction='none')
-        #loss = torch.mean(masks1*(loss1+loss2)+masks2*(loss3+loss4))
         loss = torch.mean(masks*(loss1+loss2))
         return loss
     
