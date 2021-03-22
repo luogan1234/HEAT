@@ -40,7 +40,6 @@ class Config:
         self.con_warmup = 1000
         self.attention_dim = 64
         self.max_steps = 2500
-        self.eps = 1e-7
         
         self.name_pooling = 'average'
         self.para_pooling = 'attention'
@@ -60,11 +59,10 @@ class Config:
     def lr(self):
         if self.text_encoder == 'bert' and not (self.remove_name and self.remove_para):
             lr = 2e-5
+        elif self.dataset in ['flower'] and not self.remove_img:
+            lr = 5e-5
         else:
-            if self.dataset in ['flower']:
-                lr = 5e-5
-            else:
-                lr = 1e-3
+            lr = 1e-3
         return lr
     
     def batch_size(self, mode, con):
