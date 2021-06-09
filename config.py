@@ -19,10 +19,10 @@ class Config:
         if self.dataset in ['meituan_food']:
             self.language = 'zh'
             self.vocab_num = 21128  # bert-base-chinese
-        if self.dataset in ['type_net', 'med_mentions', 'flower']:
+        if self.dataset in ['type_net', 'med_mentions', 'flowers', 'birds']:
             self.language = 'en'
             self.vocab_num = 30522  # bert-base-uncased
-        if self.dataset in ['flower']:
+        if self.dataset in ['flowers', 'birds']:
             self.loss_fn = 'ce'
         else:
             self.loss_fn = 'bce'
@@ -59,13 +59,13 @@ class Config:
     def lr(self):
         if self.text_encoder == 'bert' and not (self.remove_name and self.remove_para):
             lr = 2e-5
-        elif self.dataset in ['flower'] and not self.remove_img:
+        elif self.dataset in ['flowers', 'birds'] and not self.remove_img:
             lr = 5e-5
         else:
             lr = 1e-3
         return lr
     
-    def batch_size(self, mode, con):
+    def batch_size(self, mode, con):  # mode: train or eval, con: consistency training
         if self.text_encoder == 'bert':
             batch_size = 8
         else:

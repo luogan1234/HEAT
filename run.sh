@@ -8,7 +8,7 @@ for encoder in "bilstm" "bert"; do
       done
     done
   done
-  for dataset in "flower"; do
+  for dataset in "flowers" "birds"; do
     for task in 0; do
       for seed in {0..1}; do
         cmd="python main.py -dataset $dataset -text_encoder $encoder -task $task -remove_name -seed $seed"

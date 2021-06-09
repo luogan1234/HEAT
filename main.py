@@ -24,9 +24,9 @@ def main():
     if not os.path.exists('result/predictions/'):
         os.mkdir('result/predictions/')
     parser = argparse.ArgumentParser(description='Entity-level Typing')
-    parser.add_argument('-dataset', type=str, required=True, choices=['meituan_food', 'type_net', 'med_mentions', 'flower'])
+    parser.add_argument('-dataset', type=str, required=True, choices=['meituan_food', 'type_net', 'med_mentions', 'flowers', 'birds'])
     parser.add_argument('-task', type=int, default=0)
-    parser.add_argument('-text_encoder', type=str, default='bert', choices=['bert', 'bert_freeze', 'bilstm'])
+    parser.add_argument('-text_encoder', type=str, default='bert', choices=['bert', 'bilstm'])
     parser.add_argument('-remove_name', action='store_true', default=False)
     parser.add_argument('-remove_para', action='store_true', default=False)
     parser.add_argument('-remove_img', action='store_true', default=False)
